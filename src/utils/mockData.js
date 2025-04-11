@@ -1,43 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://png.pngtree.com/template/20191014/ourmid/pngtree-pin-food-delivery-map-location-delivery-logo-concept-image_318151.jpg"
-        />
-      </div>{' '}
-      <div className="nav-items">
-        <ul>
-          <li> Home </li> <li> About Us </li> <li> Contact us </li>{' '}
-          <li> Cart </li>{' '}
-        </ul>{' '}
-      </div>{' '}
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  const { resData } = props;
-  return (
-    <div className="res-card">
-      <img
-        alt="image"
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/ba8e5491e60807af8c62dad36b5a25ed"
-        className="res-logo"
-      />
-      <h2>{resData.name}</h2>
-      <h4>{resData.cuisines}</h4>
-      <h4>{resData.rating}</h4>
-      <h4>{resData.cuisines}</h4>
-      <h4>{resData.costForTwo}</h4>
-    </div>
-  );
-};
-
 const indianRestaurants = [
   {
     id: 1,
@@ -161,26 +121,4 @@ const indianRestaurants = [
   },
 ];
 
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search </div>
-      <div className="res-container">
-        {indianRestaurants.map((restaurant) => {
-          return <RestaurantCard key={restaurant.id} resData={restaurant} />;
-        })}
-      </div>
-    </div>
-  );
-};
-const App = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+export default indianRestaurants;
