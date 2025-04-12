@@ -58,7 +58,7 @@ const Body = () => {
             const FilteredList = State.filter(
               (res) => res.info.avgRating > 4.5
             );
-            setState(FilteredList);
+            setFilteredRest(FilteredList);
           }}
         >
           Top rated Restaurants
