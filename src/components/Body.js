@@ -4,9 +4,9 @@ import Shimmer from './shimmer';
 import { useState, useEffect } from 'react';
 
 const Body = () => {
-  const [State, setState] = useState(indianRestaurants);
+  const [State, setState] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const [filteredRest, setFilteredRest] = useState(indianRestaurants);
+  const [filteredRest, setFilteredRest] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
@@ -18,8 +18,10 @@ const Body = () => {
     //as soon as we have got this data , now we have rerender the compoenents . spo we have to update the State using setState() function
     const json = await data.json();
     const infoArray =
-      json?.data?.cards?.[0]?.card?.gridElements?.infoWithStyle?.info || [];
-    //setState(infoArray);
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+
+    setState(infoArray);
+    setFilteredRest(infoArray);
   };
 
   //Conditional rendering
@@ -41,7 +43,7 @@ const Body = () => {
           <button
             onClick={() => {
               const filteredRest = State.filter((res) =>
-                res.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
 
               setFilteredRest(filteredRest);
@@ -53,7 +55,9 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            const FilteredList = State.filter((res) => res.rating > 4.2);
+            const FilteredList = State.filter(
+              (res) => res.info.avgRating > 4.5
+            );
             setState(FilteredList);
           }}
         >
@@ -62,7 +66,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRest.map((restaurant) => {
-          return <RestaurantCard key={restaurant.id} resData={restaurant} />;
+          return (
+            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          );
         })}
       </div>
     </div>
