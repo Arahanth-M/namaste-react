@@ -17,8 +17,10 @@ const Body = () => {
     );
     //as soon as we have got this data , now we have rerender the compoenents . spo we have to update the State using setState() function
     const json = await data.json();
+    //optional chaining
     const infoArray =
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
 
     setState(infoArray);
     setFilteredRest(infoArray);
