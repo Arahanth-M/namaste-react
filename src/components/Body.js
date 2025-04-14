@@ -1,16 +1,17 @@
 import RestaurantCard from './RestaurantCard';
-import indianRestaurants from '../utils/mockData';
+
 import Shimmer from './shimmer';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Body = () => {
   const [State, setState] = useState([]);
-  const [searchText, setSearchText] = useState('');
   const [filteredRest, setFilteredRest] = useState([]);
+  const [searchText, setSearchText] = useState('');
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []); //if dependency array is present , then the useEffect is only executed after the initial render of the component and only once thats all
 
   const fetchData = async () => {
     const data = await fetch(
@@ -59,7 +60,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const FilteredList = State.filter(
-              (res) => res.info.avgRating > 4.5
+              (res) => res.info.avgRating > 4.0
             );
             setFilteredRest(FilteredList);
           }}
