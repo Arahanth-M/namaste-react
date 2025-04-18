@@ -10,6 +10,7 @@ import Error from './components/Error';
 import UserContext from './utils/UserContext';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
+import Cart from './components/Cart';
 
 const App = () => {
   //this is exactly how the actual authentication works in real owrld applcaiion . react applications make use of createContext and useContext to handle global data or data taht is required in multiple places across the application
@@ -55,6 +56,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/restaurant/:resId',
         element: <RestaurantMenu />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
