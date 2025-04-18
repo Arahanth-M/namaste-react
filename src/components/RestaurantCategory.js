@@ -9,6 +9,7 @@ const RestaurantCategory = ({ data }) => {
 
         <span>🔽</span>
       </div>
+      <ItemList items={data.itemCards} />
     </div>
   );
 };
