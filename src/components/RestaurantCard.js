@@ -4,6 +4,7 @@ import { REST_IMAGE } from '../utils/constants';
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+  console.log(resData);
   const { loggedInUser } = useContext(UserContext);
   return (
     <div className="m-4 p-4 w-[250px] bg-gray-200 rounded-md  hover:bg-gray-400 ">
